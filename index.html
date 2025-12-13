@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="todoheader">
+            <div class="leftside">
+                <img src="./cowrise logo.jpg" width="40" style="border-radius: 30%;">
+                <h3>BmG </h3>
+            </div>
+            <div class="rightriside">
+                <button class="controlBTN lightDark">☀️</button>
+                <button class="controlBTN ClearBTN">Clear Completed</button>
+                <button class="controlBTN exportBTN">Export</button>
+                <button class="controlBTN importBTN">import</button>
+            </div>
+        </div>
+        <div class="taskinput">
+            <input type="text" name="" class="inputEl" placeholder="Add a new task& press enter">
+            <button class="controlBTN addBTN">Add</button>
+        </div>
+        <div class="taskparent">
+
+            <div class="taskchild">
+                <div class="taskleftside">
+                    <input type="checkbox">
+                    <p>texttask</p>
+                </div>
+                <div class="taskRightside">
+                    <button class="controlBTN editbutton">✎</button>
+                    <button class="controlBTN editbutton">🗑</button>
+                </div>
+            </div>
+            <div class="taskchild">
+                <div class="taskleftside">
+                    <input type="checkbox">
+                    <p class="done">texttask</p>
+                </div>
+                <div class="taskRightside">
+                    <button class="controlBTN editbutton">✎</button>
+                    <button class="controlBTN editbutton">🗑</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="taskfootler">
+            <div class="footerinfo">
+                <p style="color: gray; font-size: 12px;">
+                    <span class="tasknumber">0</span>
+                    active.
+                    <span class="totaltasks">45</span>
+                </p>
+            </div>
+            <div class="tabsbuttons">
+                <button class="controlBTN tabBTN">All</button>
+                <button class="controlBTN tabBTN">active</button>
+                <button class="controlBTN tabBTN">Completed</button>
+            </div>
+            <p style="color: gray; font-size: 12px;">Tip:double-click a task to edit it</p>
+
+        </div>
+
+
+
+
+
+
+        <script src="./script.js"></script>
+</body>
+
+</html>

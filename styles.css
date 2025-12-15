@@ -116,7 +116,15 @@ background-color: rgb(246, 242, 242);
     font-size: 12px;
     padding: 5px;
 }
-
+ .tab1,.tab2,.tab3{
+    display: none;
+} 
+.showTab{
+    display: block !important;
+}
+.hideTab{
+    display: none;
+}
 
 
 

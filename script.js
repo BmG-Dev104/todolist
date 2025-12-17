@@ -37,7 +37,7 @@ Btn3.addEventListener("click", function () {
 
 function renderTasks(userinput, id) {
     console.log(userinput)
-    if(userinput. length<1){
+    if (userinput.length < 1) {
         return
     }
     let inputbox = document.createElement("input")
@@ -113,11 +113,80 @@ inputEl.addEventListener("keypress", function (e) {
 
 
 function edittask(e) {
-    // alert("Edit Task Functionality coming soon")
-    let editbutton = e.target
-    let taskRightside = editbutton.parentElement
-    let taskchild = taskRightside.parentElement
+    // STEP1:Find the main  task container
+
+    // let editbutton = e.target
+    // // let taskRightside = editbutton.parentElement
+    // let taskchild = taskRightside.parentElement
+
+    const editbutton = e.target
+    console.log(editbutton)
+    const taskRightside = e.target.parentElement;
+    console.log(taskRightside)
+    const taskchild = taskRightside.parentElement;
+    console.log(taskchild);
+
+    //STEP2:Find the left side (where the text is)
+    const leftside = taskchild.querySelector(".taskleftside")
+    // //STEP3:Find the <p> element that contains the tasks text
+    const textElement = leftside.querySelector("p")
+    // //STEP4:save the old text(incase user can els)
+    const oldText = textElement.textContent
+    // //STEP5:Create an input box for editing 
+    const input = document.createElement("input");
+    input.type = "text"
+    input.value = oldText;//put the old text inside the input
+    input.classList.add("editInput");//add styling class
+
+
+    // //STEP6:Replace the <p> With the input box
+    leftside.replaceChild(input, textElement)//
+    input.focus();//Automatically focus on the input so user can type
+    console.log(leftside)
+
+    // //STEP7:find where this task is inour array
+    const taskIndex = tasksarry.indexOf(oldText);
+    console.log(taskIndex);
+    console.log(tasksarry);
+
+    // //STEP8:Create a funtion to save the changes
+    function saveEdit() {
+        //     //Get the new text from the input 
+        const newText = input.value.trim();
+        //     //Check if user left it empty
+        if (newText === "") {
+            //         //If empty ,keep the old text 
+            tasksarry[taskIndex] = oldText;
+        } else {
+            //         //If not empty, update the array with new text 
+            tasksarry[taskIndex] = newText;
+        }
+
+        //     //STEP9:Create a new <p> element with the updated  text 
+        const newp = document.createElement("p");
+        newp.textContent = tasksarry[taskIndex];
+        //     //STEP10:Replace the input box back with the <p>
+        leftside.replaceChild(newp, input);
+    }
+    // //STEP11: Save  when user press enter 
+    input.addEventListener("keypress", function (ev) {
+        if (ev.key === "Enter") {
+            saveEdit();
+        }
+    });
+
+    // //STEP12:Save when user clicks away from the input
+    input.addEventListener("blur", saveEdit);
 }
+
+
+
+
+
+
+
+
+
 
 
 function deletetask(e) {
@@ -137,17 +206,44 @@ function deletetask(e) {
 
 
 
+//clearing task
 
-
-
-
-
-function imposters() {
-    alert("make sure you arent doing anything against time")
-}
-ClearBTN.addEventListener("click",function(){
-    tasksarry=[]
+ClearBTN.addEventListener("click", function () {
+    tasksarry = []
     addtask()
 
-    
+
 })
+
+
+function lightDarkcontrol() {
+    if (lightDark.textContent === "☀️") {
+        lightDark.textContent = "🌙";
+        document.body.classList.add("dark")
+        lightDark.classList.add("dark")
+        ClearBTN.classList.add("dark")
+        exportBTN.classList.add("dark")
+        importBTN.classList.add("dark")
+        inputEl.classList.add("dark")
+        tasktap1.classList.add("dark")
+        tasktap2.classList.add("dark")
+        tasktap3.classList.add("dark")
+        
+    } else {
+        lightDark.textContent === "🌙"
+        lightDark.textContent = "☀️";
+        document.body.classList.remove("dark")
+        lightDark.classList.remove("dark")
+         ClearBTN.classList.remove("dark")
+        exportBTN.classList.remove("dark")
+        importBTN.classList.remove("dark")
+        inputEl.classList.remove("dark")
+        tasktap1.classList.remove("dark")
+        tasktap2.classList.remove("dark")
+        tasktap3.classList.remove("dark")
+        
+
+        
+    }
+}
+lightDark.addEventListener("click",lightDarkcontrol );
